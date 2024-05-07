@@ -1,0 +1,283 @@
+/* 主要CSS文件
+ * 
+ * 请在需要新增CSS文件时 通过@import url("[此文件的相对或绝对路径]"); 引入此CSS
+ * 
+*/
+
+:root {
+    --theme-color: #e6c6e6;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+html,
+body,
+footer {
+    /* 设置页面占满整个视口 以及细滚动条 */
+    width: auto;
+    margin: 0px;
+    padding: 0px;
+
+    overflow: auto;/*保证滚动条隐藏后页面依旧可以正常滚动*/
+
+    scrollbar-width: 0;/*火狐浏览器隐藏滚动条*/
+    -ms-overflow-style: none; /*IE浏览器隐藏滚动条*/
+}
+
+::-webkit-scrollbar {
+    /* 针对基于Chrome内核的浏览器的隐藏滚动条的设定 */
+    display: none;
+}
+
+.navigation_bar {
+    /* 设置导航栏的网格、基本对齐和其它样式 */
+    display: grid;
+    grid-template-columns: repeat(12, auto);
+
+    height: 64px;
+    width: 100%;
+
+    align-content: center;
+    align-items: center;
+
+    background-color: var(--theme-color);
+}
+
+
+/*下拉菜单的实现 Start*/
+
+.navigation_bar .logo_list {
+    /* 设置下拉菜单的样式 */
+    display: block;
+    width: 50px;
+    grid-column: 1;
+    justify-self: end;
+    user-select: none;
+    -webkit-user-drag: none;
+    cursor: pointer;
+}
+
+.navigation_bar .logo_list .logo {
+    /* Logo的宽度和对齐 */
+    width: 50px;
+    height: 50px;
+    justify-self: end;
+    cursor: pointer;
+}
+
+.navigation_bar .logo_list .list_contents {
+    /* 在默认状态下隐藏下拉菜单 使用绝对定位将菜单脱离文档流 */
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.navigation_bar .logo_list .list_contents a {
+    /* 设置下拉菜单内的a标签样式 */
+    color: #ffffff;
+    background-color: var(--theme-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+    font-weight: 700;
+
+    &:hover {
+        background-color: #ffffff;
+        color: var(--theme-color);
+    }
+
+    &#selected {
+        /* 设置“被选中”页面时 相关a标签的样式 */
+        color: #000000;
+        cursor: default;
+    }
+
+    &#selected:hover {
+        /* 也是设置“被选中”页面时 相关a标签的样式 */
+        background-color: var(--theme-color);
+        color: #000000;
+    }
+}
+
+.navigation_bar .logo_list:hover .list_contents {
+    /* 启用在鼠标悬停到Logo上时 展示下拉菜单 */
+    display: block;
+}
+
+
+
+/*下拉菜单的实现 End*/
+
+
+.navigation_bar .logo_text {
+    /* 设置导航栏的一级标题 也就是CheeseSoft字样的样式 */
+    color: #ffffff;
+    margin-left: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.navigation_bar .navigation_list {
+    /* 设置导航栏导航列表的样式 */
+    height: 64px;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 5px;
+
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+
+    grid-column: 8 / 12;
+
+    & a {
+        font-size: 18px;
+        font-weight: 700;
+        display: block;
+        color: #ffffff;
+        grid-column: auto;
+
+        height: 64px;
+        line-height: 64px;
+        width: 100%;
+        text-align: center;
+
+        user-select: none;
+        cursor: pointer;
+    }
+
+    & a:hover {
+        color: var(--theme-color);
+        background-color: #ffffff;
+    }
+
+    & a#selected {
+        /* 设置“被选中”页面时 相关a标签的样式 */
+        color: #000000;
+        cursor: default;
+    }
+
+    & a#selected:hover {
+        /* 也是设置“被选中”页面时 相关a标签的样式 */
+        background-color: var(--theme-color);
+        color: #000000;
+    }
+}
+
+footer {
+    padding: 10px;
+
+    background-color: #000000;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 10px;
+
+    user-select: none;
+
+    & * {
+        color: #ffffff;
+    }
+
+    & div {
+        grid-column: 2;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(2, auto);
+
+        align-items: center;
+        justify-self: center;
+        grid-column-gap: 5px;
+
+        & img {
+            width: 50px;
+            height: 50px;
+
+            grid-column: 1;
+        }
+
+        & h1 {
+            grid-column: 2;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        & .record {
+            grid-column: span 2;
+            text-align: center;
+        }
+    }
+
+    & ul {
+        display: grid;
+        grid-template-rows: 2;
+        list-style-type: none;
+
+        & label {
+            grid-row: 1;
+            grid-column: 1;
+            justify-self: start;
+            font-size: 20px;
+        }
+
+        & li {
+            grid-row: 2;
+
+            & a {
+                color: var(--theme-color);
+                cursor: pointer;
+            }
+        }
+
+        &:nth-child(2) {
+            grid-row: 2;
+            grid-column: 1;
+            border-right: 2px solid #ffffff;
+        }
+
+        &:nth-child(3) {
+            grid-row: 2;
+            grid-column: 2;
+            border-right: 2px solid #ffffff;
+        }
+
+        &:nth-child(4) {
+            grid-row: 2;
+            grid-column: 3;
+        }
+
+        & label {
+            border-bottom: 2px solid #ffffff;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+@media all and (orientation:portrait) {
+
+    /* 针对竖屏移动设备的样式设置 */
+    .navigation_bar .navigation_list {
+        /*你没有看错 这里的确是暴力的隐藏了导航栏的导航列表*/
+        display: none;
+    }
+
+    footer {
+        /* 针对竖屏移动设备页脚的样式设置 */
+        & ul {
+            /* 将横向排列改为竖直排列 */
+            display: flex;
+            flex-direction: column;
+
+            &:nth-child(2), &:nth-child(3){border-right: none;}
+        }
+    }
+}

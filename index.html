@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="zh-ch">
+
+<head>
+    <title>CheeseSoft: 还不关注？！</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link type="text/css" rel="Stylesheet" href="./css/index.css" />
+    <link rel="icon" href="./assets/picture/logo.png" />
+</head>
+
+<body>
+    <div class="banner">
+        <div class="navigation_bar">
+            <div class="logo_list">
+                <img class="logo" src="./assets/picture/logo.png" />
+                <div class="list_contents">
+                    <a href="./html/songs_list.html">歌单</a>
+                    <a href="./html/wallpaper.html">壁纸</a>
+                    <a href="./html/live_schedule.html">直播表</a>
+                    <a href="https://space.bilibili.com/17992194/" target="_blank">空间</a>
+                    <a href="./html/questions.html">提问箱</a>
+                    <a href="./html/message.html">留言箱</a>
+                    <a href="./html/about.html">关于</a>
+                </div>
+            </div>
+            <h1 class="logo_text" onclick="location.assign('./index.html')">CheeseSoft</h1>
+
+            <div class="navigation_list">
+                <a href="./html/songs_list.html">歌单</a>
+                <a href="./html/wallpaper.html">壁纸</a>
+                <a href="./html/live_schedule.html">直播表</a>
+                <a href="./html/questions.html">提问箱</a>
+                <a href="./html/message.html">留言箱</a>
+                <a href="./html/about.html">关于</a>
+            </div>
+        </div>
+
+        <div class="main_contents">
+            <div id="main_text">
+                <h2>感兴趣吗？朋友</h2>
+                <p><a href="https://space.bilibili.com/17992194/" target="_blank">芝士饿晕了耶</a>，全平台最温柔的宝宝💜</p>
+            </div>
+
+            <div id="main_links">
+                <a href="https://space.bilibili.com/17992194/" target="_blank">她的空间</a>
+                <a href="https://live.bilibili.com/5573692" target="_blank">观看直播</a>
+            </div>
+
+            <a id="down_button" onclick="goto_down('.footer')"></a>
+        </div>
+
+        <video class="background_video" src="./assets/video/background1.mp4" autoplay="autoplay" loop="loop"
+            muted="m"></video>
+    </div>
+
+    <!-- 从这里插入新的内容 -->
+</body>
+
+<footer class="footer">
+    <div>
+        <img class="logo" src="./assets/picture/logo.png" />
+        <h1 class="logo_text" onclick="location.assign('./index.html')">CheeseSoft</h1>
+        <label class="record"><a>备案号</a></label>
+    </div>
+
+    <ul>
+        <label>链接</label>
+        <li><a href="./html/songs_list.html">歌单</a></li>
+        <li><a href="./html/wallpaper.html">壁纸</a></li>
+        <li><a href="./html/live_schedule.html">直播表</a></li>
+        <li><a href="./html/questions.html">提问箱</a></li>
+        <li><a href="./html/message.html">留言箱</a></li>
+        <li><a href="./html/about.html">关于</a></li>
+    </ul>
+
+    <ul>
+        <label>芝士饿晕了耶</label>
+        <li><a href="https://space.bilibili.com/17992194/" target="_blank">B站空间</a></li>
+        <li><a href="https://live.bilibili.com/5573692" target="_blank">B站直播间</a></li>
+    </ul>
+
+    <ul>
+        <label>开发成员</label>
+        <li><a href="https://ziran6959.github.io" target="_blank">齐兰6959ziran6959</a></li>
+        <li>清秋</li>
+        <li>熬夜</li>
+    </ul>
+</footer>
+
+<script>
+    function _heightToTop(ele) {
+        let root = document.body;
+        let height = 0;
+        do {
+            height += ele.offsetTop;
+            ele = ele.offsetParent;
+        } while (ele !== root)
+        return height;
+    }
+
+    function goto_down(target) {
+        window.scrollTo({
+            top: _heightToTop(document.querySelector(target)),
+            behavior: 'smooth'
+        })
+    }
+</script>
+
+</html>

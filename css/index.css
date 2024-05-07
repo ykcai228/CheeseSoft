@@ -1,0 +1,179 @@
+@import url("./main.css");
+
+a, p, h1, h2, h3 {
+    /* 设置以上标签的默认值 仅在index有效 */
+    color: #ffffff;
+    text-decoration-line: none;
+}
+
+.banner {
+    /* 设置整个banner区的高度为视口高度 */
+    height: 100vh;
+}
+
+.banner .navigation_bar {
+    /* 将包含在banner中的导航栏通过绝对定位脱离出文档流 以便后续将视频叠底 */
+    position: absolute;
+    background-color: #e6c6e647;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+
+    & a:hover {
+        /* 针对index界面 导航栏悬停样式的单独设置 */
+        background-color: #e6c6e6;
+        color: #ffffff;
+    }
+}
+
+.banner .main_contents {
+    /* 设置banner区主要内容的样式 */
+    position: absolute;
+
+    top: 64px;
+
+    height: calc(100vh - 64px);
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    z-index: 0;
+}
+
+.banner .main_contents #main_text {
+    /* 主要内容中的主要文本区域的样式 */
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    user-select: none;
+
+    & * {
+        color: #ffffff;
+    }
+
+    & h2 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    & a {
+        color: var(--theme-color);
+        text-align: center;
+    }
+
+    & p {
+        text-align: center;
+    }
+}
+
+.banner .main_contents #main_links {
+    /* 实则是“她的空间”、“观看直播”两个按钮的样式 */
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: center;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-gap: 32px;
+
+    height: 32px;
+
+    & a {
+        display: block;
+        text-align: center;
+
+        padding: 10px;
+
+        color: var(--theme-color);
+        border: 2px solid var(--theme-color);
+        border-radius: 6px;
+        font-weight: 600;
+        
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            color: #ffffff;
+            background-color: var(--theme-color);
+        }
+    }
+}
+
+.banner .main_contents #down_button {
+    /* 向下滚动按钮的样式 */
+    grid-row: 4;
+    grid-column: 2;
+
+    align-self: start;
+    justify-self: center;
+
+    margin-bottom: 64px;
+
+    padding: 6px;
+    display: block;
+
+    animation: shows 1.5s;
+    animation-iteration-count: infinite;
+
+    &::before {
+        content: "[ CLICK ]";
+    }
+
+    &:hover::before {
+        content: "[ DOWN ]";
+    }
+}
+
+.banner .background_video {
+    /* 视频的样式 主要是设置裁切和将视频放到其它元素之下 */
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    overflow-y: hidden;
+    z-index: -1;
+
+    top: 0px;
+    left: 0px;
+}
+
+@media all and (orientation:portrait) {
+    /* 针对竖屏移动设备的样式设置 */
+
+    .banner .main_contents #main_text {
+        /* 解决移动端主要内容文本区的文本显示过挤的问题 */
+        width: 210%;
+    }
+
+    .banner .main_contents #main_links {
+        /* 解决两个跳转按钮在移动端莫名其妙竖着显示的问题 */
+        grid-gap: 0;
+        justify-self: center;
+        & a {
+            width: 50%;
+        }
+    }
+
+    .banner .background_video {
+        width: 100vw;
+        object-fit:cover;
+        object-position: 0px;
+    }
+}
+
+@keyframes shows {
+    /* 向下滚动按钮的闪烁动画 */
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
