@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>404 NOT FOUND</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link type="text/css" rel="Stylesheet" href="./css/main.css" />
+    <link rel="icon" href="./assets/picture/logo.png" />
+</head>
+
+<style>
+    .error {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: calc(100vh - 64px);
+
+        & img {
+            height: 80%;
+            width: auto;
+        }
+    }
+
+    @media all and (orientation:portrait) {
+        .error {
+            & img {
+                width: 80%;
+                height: auto;
+            }
+        }
+    }
+</style>
+
+<body>
+    <div class="navigation_bar">
+        <div class="logo_list">
+            <img class="logo" src="./assets/picture/logo.png" />
+            <div class="list_contents">
+                <a href="./html/songs_list.html">歌单</a>
+                <a href="./html/wallpaper.html">壁纸</a>
+                <a href="./html/live_schedule.html">直播表</a>
+                <a href="https://space.bilibili.com/17992194/" target="_blank">空间</a>
+                <a href="./html/questions.html">提问箱</a>
+                <a href="./html/message.html">留言箱</a>
+                <a href="./html/about.html">关于</a>
+            </div>
+        </div>
+        <h1 class="logo_text" onclick="location.assign('./index.html')">CheeseSoft</h1>
+
+        <div class="navigation_list">
+            <a href="./html/songs_list.html">歌单</a>
+            <a href="./html/wallpaper.html">壁纸</a>
+            <a href="./html/live_schedule.html">直播表</a>
+            <a href="./html/questions.html">提问箱</a>
+            <a href="./html/message.html">留言箱</a>
+            <a href="./html/about.html">关于</a>
+        </div>
+    </div>
+
+    <div class="error">
+        <img src="./assets/picture/Error404.png" alt="返回主页" onclick="location.assign('./index.html')" />
+    </div>
+</body>
+
+</html>
